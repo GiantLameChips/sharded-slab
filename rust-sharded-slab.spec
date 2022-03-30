@@ -13,6 +13,8 @@ Summary:        Lock-free concurrent slab
 License:        MIT
 URL:            https://crates.io/crates/sharded-slab
 Source:         %{crates_source}
+# Initial patched metadata
+Patch0:         sharded-slab-fix-metadata.diff
 
 ExclusiveArch:  %{rust_arches}
 
@@ -49,18 +51,6 @@ This package contains library source intended for building other packages which
 use the "default" feature of the "%{crate}" crate.
 
 %files       -n %{name}+default-devel
-%ghost %{crate_instdir}/Cargo.toml
-
-%package     -n %{name}+loom-devel
-Summary:        %{summary}
-BuildArch:      noarch
-
-%description -n %{name}+loom-devel %{_description}
-
-This package contains library source intended for building other packages which
-use the "loom" feature of the "%{crate}" crate.
-
-%files       -n %{name}+loom-devel
 %ghost %{crate_instdir}/Cargo.toml
 
 %prep
